@@ -18,7 +18,11 @@ export class RegisterComponent {
     Validators.pattern(/^(?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm),
   ]);
   confirm_password = new FormControl('', [Validators.required]);
-  phoneNumber = new FormControl('', [Validators.required, Validators.minLength(13), Validators.maxLength(13)]);
+  phoneNumber = new FormControl('', [
+    Validators.required,
+    Validators.minLength(13),
+    Validators.maxLength(13),
+  ]);
   registerForm = new FormGroup({
     name: this.name,
     email: this.email,
@@ -26,5 +30,8 @@ export class RegisterComponent {
     password: this.password,
     confirm_password: this.confirm_password,
     phoneNumber: this.phoneNumber,
-  });
+  })
+  register(){
+    console.log('submit')
+  }
 }
