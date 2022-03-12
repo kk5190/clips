@@ -6,6 +6,7 @@ import { TabComponent } from './tab/tab.component';
 import { InputComponent } from './input/input.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -13,16 +14,15 @@ import { NgxMaskModule } from 'ngx-mask';
     TabsConatinerComponent,
     TabComponent,
     InputComponent,
+    AlertComponent,
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    NgxMaskModule.forRoot()],
+  imports: [CommonModule, ReactiveFormsModule, NgxMaskModule.forRoot()],
   exports: [
     ModalComponent,
     TabsConatinerComponent,
     TabComponent,
     InputComponent,
+    AlertComponent,
   ],
 })
 export class SharedModule {}
