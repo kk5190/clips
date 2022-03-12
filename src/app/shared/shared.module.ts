@@ -5,23 +5,19 @@ import { TabsConatinerComponent } from './tabs-conatiner/tabs-conatiner.componen
 import { TabComponent } from './tab/tab.component';
 import { InputComponent } from './input/input.component';
 
-
-
 @NgModule({
   declarations: [
     ModalComponent,
     TabsConatinerComponent,
     TabComponent,
-    InputComponent
+    InputComponent,
   ],
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   exports: [
     ModalComponent,
     TabsConatinerComponent,
     TabComponent,
-    InputComponent
-  ]
+    InputComponent,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}
