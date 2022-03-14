@@ -9,6 +9,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class RegisterComponent {
   constructor(private auth: AngularFireAuth) {}
+  inSubmission = false;
   name = new FormControl('', [Validators.required, Validators.minLength(3)]);
   email = new FormControl('', [Validators.required, Validators.email]);
   age = new FormControl('', [
@@ -43,9 +44,24 @@ export class RegisterComponent {
     this.showAlert = true;
     this.alertMsg = 'Please wait! Your account is being created.';
     this.alertColor = 'blue';
-    const { email, password } = this.registerForm.value
-    const userCred = await this.auth.createUserWithEmailAndPassword(
-      email, password
-    )
+    this.inSubmission = true;
+    const { email, password } = this.registerForm.value;
+
+    try {
+      const userCred = await this.auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
+      console.log(userCred);
+    } catch (e) {
+      console.error(e);
+      this.alertMsg = 'An unexpected error occurrred. Please try again!';
+      this.alertColor = 'red';
+      this.inSubmission = false;
+      return;
+    }
+
+    this.alertMsg = 'Success! Your account has been created.';
+    this.alertColor = 'green';
   }
 }
